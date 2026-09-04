@@ -15,19 +15,19 @@ def install_type():
     # Checks if Caster install is Classic or PIP.
     try:
         version("castervoice")
-def get_text_via_acceessibility():
-    importt syss
+def get_text_via_accessibility():
+    import sys
     if sys.platform=="win32":
         try:
             import uiautomation as uia 
-            focused_element=uia.GetFocusedControl()
+            focused_element = uia.GetFocusedControl()
             if focused_element:
-                pattern=focused_element_element.GetValuePattern()
+                #ValuePattern
+                pattern=focused_element.GetValuePattern()
                 if pattern:
                     return pattern.value
                 return focused_element.Name
         except Exception:
-            return""
     elif sys.platform=="darwin":
         try:
             import Appkit
