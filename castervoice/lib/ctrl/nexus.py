@@ -46,6 +46,8 @@ class Nexus:
         '''CasterState is used for impl of the asynchronous actions'''
 
         self.state = CasterState()
+        self._accessibility_hooks=[]
+        self._active_window_api=None
 
         '''rpc class for interacting with Caster UI elements via xmlrpclib'''
         self.comm = Communicator()
@@ -79,7 +81,7 @@ class Nexus:
         self._grammar_manager = Nexus._create_grammar_manager(self._merger,
             self._content_loader, hooks_runner, rules_config, smrc, mapping_rule_maker,
             transformers_runner)
-
+        self.register_accessibility_hooks()
         '''ACTION TIME:'''
         self._load_and_register_all_content(rules_config, hooks_runner, transformers_runner)
         self._grammar_manager.initialize()
